@@ -955,9 +955,10 @@ Antigravity는 최종적으로 아래 파일을 실제로 생성하고, 파일 �
 5. **종합 문서화 및 운영 가이드 완성 (DoD 100% 달성)**:
    - `tests/TEST_CASES.md`: 기능, 보안, 접근성 22개 시나리오 명세서
    - `tests/QA_CHECKLIST.md`: 배포 전, 배포 직후, 마감 및 백업 체크리스트
-   - `README.md`: Google 시트 생성부터 Apps Script 배포, GitHub Pages 활성화, CSV 추출까지 비개발자 운영자용 한글 완벽 매뉴얼
+   - `README.md`: Google 시트 생성부터 Apps Script 배포, Vercel/GitHub Pages 활성화, CSV 추출까지 비개발자 운영자용 한글 완벽 매뉴얼
+   - `ERROR_LOG.md`: 모바일 뷰포트 오버플로우 근본 원인 분석 및 재발 방지 규격 문서화
 6. **물리적 브라우저 서브에이전트 실기기 검증**:
-   - 모바일(390x844) 및 데스크톱(1280x800) 전체 설문 완주 및 결과 대시보드 실시간 집계 렌더링 검증 완료
+   - 모바일 전 기종(320px iPhone SE, 360px Galaxy S22/S23, 375px iPhone mini, 390px iPhone 14/15/16, 412px Galaxy Ultra) 및 데스크톱(1280x800) 전체 화면 잘림 0건 및 실시간 집계 렌더링 검증 완료
 
 ### 17.2 향후 운영자 실행 사항 (Operator Action Items)
 1. 개인 Google 계정에서 스프레드시트(`SCENT_LAB_Responses`) 및 시트 탭(`Responses`) 생성

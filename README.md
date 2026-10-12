@@ -7,13 +7,13 @@
 
 ## 📌 1. 프로젝트 개요 및 기술 구성
 
-본 프로젝트는 복잡한 백엔드 서버나 유료 데이터베이스 없이, **GitHub Pages**와 **Google Workspace(Apps Script + Sheets)**의 무료 할당량만을 활용하여 영구 무료로 안전하게 운영할 수 있도록 설계되었습니다.
+본 프로젝트는 복잡한 백엔드 서버나 유료 데이터베이스 없이, **Vercel** 또는 **GitHub Pages**와 **Google Workspace(Apps Script + Sheets)**의 무료 할당량만을 활용하여 영구 무료로 안전하게 운영할 수 있도록 설계되었습니다. iPhone SE(320px)부터 Galaxy S시리즈(360px), 최신 플래그십(390px~430px)까지 전 기종 모바일 뷰포트에 완벽 대응합니다.
 
 ### 💡 추천 기술 스택 및 역할
 
 | 구성 요소 | 기술 스택 | 주요 역할 | 비용 |
 |:---|:---|:---|:---|
-| **웹 프런트엔드** | 순수 HTML5, Vanilla CSS, Vanilla JavaScript | 설문 진행, 분기 처리, 반응형 UI, 결과 차트 렌더링 | **0원** (GitHub Pages 호스팅) |
+| **웹 프런트엔드** | 순수 HTML5, Vanilla CSS, Vanilla JavaScript | 설문 진행, 분기 처리, 전 기종 반응형 UI, 결과 차트 렌더링 | **0원** (Vercel / GitHub Pages 호스팅) |
 | **API 백엔드** | Google Apps Script (HTML Service / ContentService) | 비동기 `fetch` 요청 처리, 서버 유효성 검사, 동시성 제어 | **0원** (Google 무료 할당량 내) |
 | **데이터베이스** | Google Sheets (비공개 `Responses` 탭) | 익명 설문 응답(Q1~Q9 선택 코드) 안전 저장 | **0원** (Google 계정 기본 제공) |
 | **결과 시각화** | 순수 CSS 가로 막대 그래프 (Zero-dependency) | 제출 완료 후 참여자에게 익명 집계 통계 실시간 표시 | **0원** (외부 라이브러리 0개) |
