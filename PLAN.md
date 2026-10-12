@@ -928,3 +928,34 @@ Antigravity는 최종적으로 아래 파일을 실제로 생성하고, 파일 �
   - 9문항, 분기, 통계 100% 정상 작동 검증
   - GitHub Pages 및 Google Apps Script 양방향 연동 완벽 호환
 
+---
+
+## 17. 개발 완료 현황 및 최종 점검 보고서 (Progress & Wrap-up)
+
+### 17.1 완료된 구현 항목 (Completed Tasks)
+1. **SSOT 기반 기획 정제 및 PRD 작성**:
+   - `PLAN.md` 내 GitHub Pages + Google Apps Script 하이브리드 아키텍처 및 CORS 해결 방안 반영
+   - `PRD(Section 16)` 작성 및 단일 진실 공급원(SSOT) 확립
+2. **TDD 기반 코어 로직 개발 및 100% 검증 통과**:
+   - `tests/core-logic.js` 및 `tests/run-tests.js` 작성
+   - 10개 핵심 단위 테스트(Q1~Q9 스키마 검증, Q2=0 분기 및 Q3 null 강제, 수식 주입 방어, 비인가 필드 차단, 표본 5건 미만 통계 차단, Q3 독립 임계값, 평균값 산출) 작성 및 통과 (`10 passed, 0 failed`)
+3. **Google Apps Script 백엔드 구축**:
+   - `Code.gs`: `doPost(e)`(CORS REST API) 및 `doGet(e)`, `submitSurvey(payload)`, `LockService.tryLock(10000)` 동시성 방어, 시트 헤더/데이터 1행 추가, 화이트리스트 검증 구현
+   - `appsscript.json`: Asia/Seoul, V8 엔진, 배포자 권한, 익명 접근 허용 매니페스트 구성
+   - `Index.html`, `Styles.html`, `Client.html`: Apps Script 단독 호스팅용 템플릿 번들 제공
+4. **GitHub Pages 프런트엔드 웹앱 구현**:
+   - `index.html`: 완전 시맨틱 HTML5 구조 (Landing, Survey, Submitting, Success, Closed, Error 6개 뷰)
+   - `style.css`: 니치 향수 브랜드 감성의 미니멀 achromatic(Zinc/Warm neutral) 디자인 시스템, 데스크톱 2열 좌측 sticky 참고패널 및 모바일 1열 아코디언 반응형 레이아웃, 순수 CSS 가로 막대 차트
+   - `app.js`: 9문항 상태 관리, Q2=0 분기, 인라인 검증, OPTIONS preflight 방지 `text/plain` 비동기 `fetch`, 데모 시뮬레이션 모드 지원
+5. **종합 문서화 및 운영 가이드 완성 (DoD 100% 달성)**:
+   - `tests/TEST_CASES.md`: 기능, 보안, 접근성 22개 시나리오 명세서
+   - `tests/QA_CHECKLIST.md`: 배포 전, 배포 직후, 마감 및 백업 체크리스트
+   - `README.md`: Google 시트 생성부터 Apps Script 배포, GitHub Pages 활성화, CSV 추출까지 비개발자 운영자용 한글 완벽 매뉴얼
+
+### 17.2 향후 운영자 실행 사항 (Operator Action Items)
+1. 개인 Google 계정에서 스프레드시트(`SCENT_LAB_Responses`) 및 시트 탭(`Responses`) 생성
+2. Apps Script 새 프로젝트에 `Code.gs` 등록 및 Script Properties(`SPREADSHEET_ID` 등) 설정
+3. Apps Script 웹 앱 배포 후 발급받은 URL을 `app.js`의 `GAS_API_URL` 상수에 기입
+4. GitHub 저장소의 `Settings > Pages`에서 GitHub Pages 활성화
+
+
