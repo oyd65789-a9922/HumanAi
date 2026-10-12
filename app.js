@@ -12,7 +12,7 @@
  * 운영자가 Google Apps Script에서 '새 배포(웹 앱)'를 완료한 후 발급받은 /exec URL을 여기에 입력합니다.
  * 빈 문자열('')인 경우 로컬 테스트 및 시연용 데모 모드로 안전하게 작동합니다.
  */
-const GAS_API_URL = '';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbwW7beKuroIqoC6iOtAqykMB6ffdlaXduZoGYSB0GMrBYw9YVvwGuaK9vawtmDiDYAS/exec';
 
 /**
  * 향 설명 원문 상수 (A, B, C 정본 - 임의 수정 금지)
