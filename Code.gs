@@ -28,37 +28,42 @@ const ALLOWED_KEYS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9'];
 function doGet(e) {
   try {
     const action = e && e.parameter ? e.parameter.action : null;
+    const config = getConfig_();
+    const sheet = getSheet_(config);
+    const rows = sheet.getLastRow() > 1 
+      ? sheet.getRange(2, 1, sheet.getLastRow() - 1, 9).getValues() 
+      : [];
+    const aggregated = aggregateResponses_(rows, config.MIN_PUBLIC_N);
     
-    // API 상태 및 통계 확인 모드
-    if (action === 'status' || action === 'stats') {
-      const config = getConfig_();
-      const sheet = getSheet_(config);
-      const rows = sheet.getLastRow() > 1 
-        ? sheet.getRange(2, 1, sheet.getLastRow() - 1, 9).getValues() 
-        : [];
-      const aggregated = aggregateResponses_(rows, config.MIN_PUBLIC_N);
-      
-      const responseData = {
-        status: config.SURVEY_OPEN ? 'OPEN' : 'CLOSED',
-        totalResponses: aggregated.totalResponses,
-        statsVisibility: aggregated.statsVisibility,
-        stats: aggregated.stats
-      };
-      
-      return ContentService.createTextOutput(JSON.stringify(responseData))
-        .setMimeType(ContentService.MimeType.JSON);
+    // 1. 단독 웹페이지(Index.html) 명시적 요청 시에만 HTML Service 렌더링
+    if (action === 'web') {
+      try {
+        const template = HtmlService.createTemplateFromFile('Index');
+        return template.evaluate()
+          .setTitle('SCENT LAB — 당신은 향을 어떻게 상상하나요?')
+          .addMetaTag('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=5.0')
+          .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+      } catch (tmplErr) {
+        // Index 파일이 없는 경우 기본 API 응답으로 통과
+      }
     }
     
-    // 기본 모드: HTML Service 템플릿 렌더링 (Apps Script 자체 호스팅 시)
-    const template = HtmlService.createTemplateFromFile('Index');
-    return template.evaluate()
-      .setTitle('SCENT LAB — 당신은 향을 어떻게 상상하나요?')
-      .addMetaTag('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=5.0')
-      .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+    // 2. 기본 모드 (URL 직접 접속) 및 ?action=stats / ?action=status: 정상 작동 상태 JSON 반환
+    const responseData = {
+      status: config.SURVEY_OPEN ? 'OPEN' : 'CLOSED',
+      api: 'SCENT LAB Survey Backend API v1.0',
+      message: 'SCENT LAB 백엔드 API가 정상 작동 중입니다.',
+      totalResponses: aggregated.totalResponses,
+      statsVisibility: aggregated.statsVisibility,
+      stats: aggregated.stats
+    };
+    
+    return ContentService.createTextOutput(JSON.stringify(responseData, null, 2))
+      .setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
     return ContentService.createTextOutput(JSON.stringify({
       error: 'SERVER_ERROR',
-      message: '요청을 처리하는 중 오류가 발생했습니다.'
+      message: err.message || '요청을 처리하는 중 오류가 발생했습니다.'
     })).setMimeType(ContentService.MimeType.JSON);
   }
 }
@@ -216,14 +221,32 @@ function getConfig_() {
  * 비공개 스프레드시트 탭 및 헤더 검증
  */
 function getSheet_(config) {
-  if (!config.SPREADSHEET_ID) {
-    throw new Error('SPREADSHEET_ID 설정이 누락되었습니다.');
+  let ss = null;
+  if (config.SPREADSHEET_ID && config.SPREADSHEET_ID.trim() !== '') {
+    try {
+      ss = SpreadsheetApp.openById(config.SPREADSHEET_ID.trim());
+    } catch (openErr) {}
   }
-  const ss = SpreadsheetApp.openById(config.SPREADSHEET_ID);
-  let sheet = ss.getSheetByName(config.SHEET_NAME);
   
+  // 스프레드시트 내 확장프로그램으로 연결된 경우 자동 탐지
+  if (!ss) {
+    try {
+      ss = SpreadsheetApp.getActiveSpreadsheet();
+    } catch (activeErr) {}
+  }
+
+  if (!ss) {
+    throw new Error('스프레드시트를 찾을 수 없습니다. SPREADSHEET_ID를 확인해 주세요.');
+  }
+
+  let sheet = ss.getSheetByName(config.SHEET_NAME);
+  // 만약 Responses 탭을 못 찾으면 첫 번째 탭 자동 사용
   if (!sheet) {
-    throw new Error(`시트 탭 '${config.SHEET_NAME}'을(를) 찾을 수 없습니다.`);
+    sheet = ss.getSheets()[0];
+  }
+
+  if (!sheet) {
+    throw new Error('스프레드시트에 사용 가능한 시트 탭이 없습니다.');
   }
 
   // 1행 헤더가 비어 있으면 자동 생성
