@@ -209,11 +209,7 @@ const elements = {
   meanBadgeQ4: document.getElementById('mean-badge-q4'),
   meanBadgeQ9: document.getElementById('mean-badge-q9'),
   q3HiddenNotice: document.getElementById('q3-hidden-notice'),
-  errorMsgText: document.getElementById('error-msg-text'),
-
-  // Extras
-  btnCopyLink: document.getElementById('btn-copy-link'),
-  toast: document.getElementById('app-toast')
+  errorMsgText: document.getElementById('error-msg-text')
 };
 
 // ==========================================================================
@@ -250,14 +246,6 @@ function initMobileReferencePanel() {
   }
 }
 
-function showToast(msg) {
-  if (!elements.toast) return;
-  elements.toast.textContent = msg;
-  elements.toast.classList.add('show');
-  setTimeout(() => {
-    elements.toast.classList.remove('show');
-  }, 2600);
-}
 
 // 라디오 버튼 선택 이벤트 바인딩
 function bindRadioEvents() {
@@ -385,15 +373,7 @@ function bindNavigationEvents() {
     applyTheme(nextTheme);
   });
 
-  // 결과 링크 복사 버튼 (토스트 알림)
-  elements.btnCopyLink?.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      showToast('연구 링크가 클립보드에 복사되었습니다.');
-    } catch (e) {
-      showToast('주소창의 링크를 복사해 주세요.');
-    }
-  });
+
 }
 
 function goToSection(sectionNumber) {
