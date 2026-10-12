@@ -172,6 +172,7 @@ const elements = {
   
   // Progress
   progressLabel: document.getElementById('progress-label'),
+  progressStageName: document.getElementById('progress-stage-name'),
   progressPercent: document.getElementById('progress-percent'),
   progressFill: document.getElementById('progress-fill'),
   progressbar: document.getElementById('survey-progressbar'),
@@ -208,7 +209,11 @@ const elements = {
   meanBadgeQ4: document.getElementById('mean-badge-q4'),
   meanBadgeQ9: document.getElementById('mean-badge-q9'),
   q3HiddenNotice: document.getElementById('q3-hidden-notice'),
-  errorMsgText: document.getElementById('error-msg-text')
+  errorMsgText: document.getElementById('error-msg-text'),
+
+  // Extras
+  btnCopyLink: document.getElementById('btn-copy-link'),
+  toast: document.getElementById('app-toast')
 };
 
 // ==========================================================================
@@ -234,7 +239,24 @@ function switchView(viewName) {
 function initApp() {
   bindRadioEvents();
   bindNavigationEvents();
+  initMobileReferencePanel();
   updateProgress();
+}
+
+function initMobileReferencePanel() {
+  if (window.innerWidth < 960 && elements.refContent && elements.refAccordionBtn) {
+    elements.refAccordionBtn.setAttribute('aria-expanded', 'false');
+    elements.refContent.style.display = 'none';
+  }
+}
+
+function showToast(msg) {
+  if (!elements.toast) return;
+  elements.toast.textContent = msg;
+  elements.toast.classList.add('show');
+  setTimeout(() => {
+    elements.toast.classList.remove('show');
+  }, 2600);
 }
 
 // 라디오 버튼 선택 이벤트 바인딩
@@ -331,6 +353,46 @@ function bindNavigationEvents() {
     elements.toggleAllStatsBtn.setAttribute('aria-expanded', !isExpanded);
     elements.allStatsWrapper.style.display = isExpanded ? 'none' : 'grid';
     elements.allStatsIcon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+  });
+
+  // 다크 / 라이트 모드 전환 및 저장
+  const themeBtn = document.getElementById('theme-toggle-btn');
+  const themeIcon = document.getElementById('theme-icon');
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (themeIcon) {
+      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+    try {
+      localStorage.setItem('scent-theme', theme);
+    } catch (e) {}
+  }
+
+  const savedTheme = (function() {
+    try {
+      return localStorage.getItem('scent-theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    } catch (e) {
+      return 'light';
+    }
+  })();
+  applyTheme(savedTheme);
+
+  themeBtn?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+  });
+
+  // 결과 링크 복사 버튼 (토스트 알림)
+  elements.btnCopyLink?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      showToast('연구 링크가 클립보드에 복사되었습니다.');
+    } catch (e) {
+      showToast('주소창의 링크를 복사해 주세요.');
+    }
   });
 }
 
@@ -519,6 +581,17 @@ function updateProgress() {
   const currentStep = state.currentSection;
   const totalSteps = isQ3Skipped ? 4 : 5;
   elements.progressLabel.textContent = `진행 상황: ${currentStep}단계 / ${totalSteps}단계`;
+
+  const stageNames = {
+    1: '참여자 기본 프로파일',
+    2: '블라인드 구매 만족도',
+    3: '후각적 상상도 평가',
+    4: '설명 텍스트 선호도',
+    5: '구매 신뢰도 및 마무리'
+  };
+  if (elements.progressStageName) {
+    elements.progressStageName.textContent = stageNames[currentStep] || '';
+  }
 }
 
 // ==========================================================================

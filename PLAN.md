@@ -942,20 +942,28 @@ Antigravity는 최종적으로 아래 파일을 실제로 생성하고, 파일 �
 3. **Google Apps Script 백엔드 구축**:
    - `Code.gs`: `doPost(e)`(CORS REST API) 및 `doGet(e)`, `submitSurvey(payload)`, `LockService.tryLock(10000)` 동시성 방어, 시트 헤더/데이터 1행 추가, 화이트리스트 검증 구현
    - `appsscript.json`: Asia/Seoul, V8 엔진, 배포자 권한, 익명 접근 허용 매니페스트 구성
-   - `Index.html`, `Styles.html`, `Client.html`: Apps Script 단독 호스팅용 템플릿 번들 제공
-4. **GitHub Pages 프런트엔드 웹앱 구현**:
-   - `index.html`: 완전 시맨틱 HTML5 구조 (Landing, Survey, Submitting, Success, Closed, Error 6개 뷰)
-   - `style.css`: 니치 향수 브랜드 감성의 미니멀 achromatic(Zinc/Warm neutral) 디자인 시스템, 데스크톱 2열 좌측 sticky 참고패널 및 모바일 1열 아코디언 반응형 레이아웃, 순수 CSS 가로 막대 차트
-   - `app.js`: 9문항 상태 관리, Q2=0 분기, 인라인 검증, OPTIONS preflight 방지 `text/plain` 비동기 `fetch`, 데모 시뮬레이션 모드 지원
+   - `Styles.html`, `Client.html`: Apps Script 단독 호스팅용 템플릿 번들 제공 및 실시간 동기화
+4. **미니멀 럭셔리 에디토리얼 UI/UX 및 모바일 반응형 정제 (군더더기 없는 본질 집중)**:
+   - **프리미엄 비주얼 에셋**: `assets/perfume-hero.jpg`(트래버틴 석재 위의 미니멀 니치 보틀), `assets/perfume-lab.jpg`(아틀리에 시향지 및 앰버 연구실) 고해상도 그래픽 배치
+   - **불필요한 장식 요소 제거**: 잡다한 공유 버튼, 플로팅 토스트, 중복 인용구 박스를 배제하고 오직 설문 응답과 통계라는 본질에만 집중
+   - **모바일 최적화 (Mobile-First UX)**:
+     - 390x844 (스마트폰 뷰포트) 맞춤형 히어로 비주얼 및 3열 콤팩트 통계 뱃지
+     - 설문 진행 시 엄지손가락 조작에 최적화된 **하단 고정 액션 독 (`.form-nav-dock`, Safe-Area 패딩 및 글래스모피즘)**
+     - 모바일 참고자료 아코디언 원터치 토글
+     - 1~5점 척도 버튼 모바일 전용 5열 터치 타겟(최소 50px) 확보 및 텍스트 겹침 방지
+   - **디자인 토큰**: `Cinzel` 세리프 + `Plus Jakarta Sans`/`Noto Sans KR` 타이포그래피, 웜 트래버틴/아크로매틱 징크 톤, 앰버 골드 액센트, 다크/라이트 모드 원터치 전환
 5. **종합 문서화 및 운영 가이드 완성 (DoD 100% 달성)**:
    - `tests/TEST_CASES.md`: 기능, 보안, 접근성 22개 시나리오 명세서
    - `tests/QA_CHECKLIST.md`: 배포 전, 배포 직후, 마감 및 백업 체크리스트
    - `README.md`: Google 시트 생성부터 Apps Script 배포, GitHub Pages 활성화, CSV 추출까지 비개발자 운영자용 한글 완벽 매뉴얼
+6. **물리적 브라우저 서브에이전트 실기기 검증**:
+   - 모바일(390x844) 및 데스크톱(1280x800) 전체 설문 완주 및 결과 대시보드 실시간 집계 렌더링 검증 완료
 
 ### 17.2 향후 운영자 실행 사항 (Operator Action Items)
 1. 개인 Google 계정에서 스프레드시트(`SCENT_LAB_Responses`) 및 시트 탭(`Responses`) 생성
 2. Apps Script 새 프로젝트에 `Code.gs` 등록 및 Script Properties(`SPREADSHEET_ID` 등) 설정
 3. Apps Script 웹 앱 배포 후 발급받은 URL을 `app.js`의 `GAS_API_URL` 상수에 기입
 4. GitHub 저장소의 `Settings > Pages`에서 GitHub Pages 활성화
+
 
 

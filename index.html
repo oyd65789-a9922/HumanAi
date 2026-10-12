@@ -1,388 +1,719 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>SCENT LAB — 당신은 향을 어떻게 상상하나요?</title>
-  <meta name="description" content="향수 설명을 읽고 실제 향이 어떻게 떠오르는지 알아보는 3분 익명 인식 조사 웹앱입니다.">
-  <?!= include_('Styles'); ?>
+  <meta name="description" content="향수 설명을 읽고 실제 향이 어떻게 떠오르는지 알아보는 3분 익명 감각 인지 조사 웹앱입니다.">
+  <meta name="theme-color" content="#FAF8F5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0C0A09" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">본문으로 건너뛰기</a>
 
-  <!-- Top Header -->
+  <!-- Header -->
   <header class="app-header">
     <div class="header-container">
-      <div class="brand-badge">SCENT LAB</div>
-      <div class="header-subtext">향을 읽는 방법 · 익명 인식 조사</div>
+      <a href="#" class="brand-anchor" aria-label="SCENT LAB 홈">
+        <div class="brand-monogram" aria-hidden="true">SL</div>
+        <div class="brand-meta">
+          <span class="brand-name">SCENT LAB</span>
+          <span class="brand-desc">향을 읽는 방법 · 익명 감각 인지 조사</span>
+        </div>
+      </a>
+
+      <div class="header-controls">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="다크 모드 또는 라이트 모드로 테마 전환" title="다크 / 라이트 모드 전환">
+          <span id="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main Views Container -->
   <main id="main-content" class="app-main">
     
-    <!-- VIEW 1: LANDING -->
+    <!-- ==================== VIEW 1: HERO LANDING ==================== -->
     <section id="view-landing" class="view-panel active" aria-labelledby="landing-title-id">
-      <div class="landing-card">
-        <span class="landing-tag">익명 설문 연구</span>
-        <h1 id="landing-title-id" class="landing-title">당신은 향을 어떻게 상상하나요?</h1>
-        <p class="landing-desc">향수 설명을 읽고, 머릿속에 향이 어떻게 떠오르는지 솔직하게 알려주세요.</p>
+      <div class="hero-editorial-wrap">
+        <div class="hero-two-column-split">
+          
+          <!-- Left: Editorial Content -->
+          <div class="hero-left-content">
+            <div class="hero-edition-pill">
+              <span class="dot" aria-hidden="true"></span>
+              <span>Research Edition No. 01 · 익명 감각 인지 연구</span>
+            </div>
 
-        <div class="meta-badges">
-          <div class="meta-item"><span aria-hidden="true">⏱️</span> 총 9문항 (약 3~4분 소요)</div>
-          <div class="meta-item"><span aria-hidden="true">🌿</span> 사전 지식 없이 누구나 참여 가능</div>
-          <div class="meta-item"><span aria-hidden="true">🔒</span> 로그인 없는 100% 완전 익명</div>
+            <h1 id="landing-title-id" class="hero-main-headline">
+              당신은 향을<br>어떻게 상상하나요?
+            </h1>
+
+            <p class="hero-sub-statement">
+              전문적 향조부터 일상적 비유까지, 텍스트가 후각적 상상력으로 전환되는 방식을 탐색합니다. 향에 대한 솔직한 생각을 들려주세요.
+            </p>
+
+            <!-- Stats Banner: 3 Compact Cards -->
+            <div class="hero-stats-banner">
+              <div class="hero-stat-card">
+                <span class="stat-card-label">예상 소요</span>
+                <span class="stat-card-value">약 3~4분 (9문항)</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-card-label">참여 방식</span>
+                <span class="stat-card-value">100% 무인증 익명</span>
+              </div>
+              <div class="hero-stat-card">
+                <span class="stat-card-label">결과 공개</span>
+                <span class="stat-card-value">제출 즉시 실시간 집계</span>
+              </div>
+            </div>
+
+            <!-- Privacy Guarantee Banner -->
+            <div class="hero-privacy-clause">
+              <strong>🔒 개인식별정보 비수집 및 익명 처리 보장</strong>
+              <p>본 설문은 이름, 이메일, 전화번호, IP 등 식별 정보를 일체 요구하거나 수집하지 않습니다. 수집된 응답은 연구 목적의 집계에만 활용되며, 제출 즉시 전체 참여자의 익명 통계를 확인하실 수 있습니다.</p>
+            </div>
+
+            <button type="button" id="btn-start-survey" class="hero-cta-btn">
+              <span>설문 시작하기</span>
+              <span class="arrow-icon" aria-hidden="true">→</span>
+            </button>
+          </div>
+
+          <!-- Right: Perfume Visual Plinth -->
+          <div class="hero-visual-pane">
+            <img src="assets/perfume-hero.jpg" alt="SCENT LAB 니치 향수 시그니처 글래스 보틀" class="hero-bottle-img">
+            <div class="hero-badge-overlay">
+              <span class="hero-badge-title">SCENT LAB — L'IMAGINATION</span>
+            </div>
+          </div>
+
         </div>
-
-        <div class="privacy-notice-box">
-          <p><strong>개인정보 비수집 및 익명 처리 고지</strong></p>
-          <p>본 설문은 이름, 이메일, 전화번호, IP 등 일체의 개인식별정보를 요구하거나 저장하지 않습니다. 수집된 응답은 연구 목적의 익명 통계 집계에만 사용되며, 설문 제출 완료 즉시 다른 참여자들의 집계 현황을 확인하실 수 있습니다.</p>
-        </div>
-
-        <button type="button" id="btn-start-survey" class="start-btn">
-          설문 시작하기
-          <span aria-hidden="true">→</span>
-        </button>
       </div>
     </section>
 
-    <!-- VIEW 2: SURVEY -->
+    <!-- ==================== VIEW 2: SURVEY ==================== -->
     <section id="view-survey" class="view-panel" aria-label="향수 인식 설문 조사">
-      <div class="survey-header-bar">
-        <div class="progress-info">
-          <span id="progress-label">진행 상황: 1단계 / 4단계</span>
-          <span id="progress-percent">0%</span>
+      
+      <!-- Progress Bar -->
+      <div class="survey-progress-bar-wrap">
+        <div class="progress-header-row">
+          <span id="progress-label" class="progress-step-text">진행 상황: 1단계 / 4단계</span>
+          <span id="progress-percent" class="progress-pct-badge">0%</span>
         </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="survey-progressbar">
-          <div id="progress-fill" class="progress-fill"></div>
+        <div class="progress-groove" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="survey-progressbar">
+          <div id="progress-fill" class="progress-fill-glow"></div>
         </div>
       </div>
 
-      <div class="survey-layout-grid">
-        <aside id="reference-panel" class="reference-panel" aria-label="향 설명 참고자료">
-          <button type="button" id="ref-accordion-btn" class="ref-accordion-trigger" aria-expanded="true" aria-controls="ref-content">
-            <span>향 설명 참고자료</span>
-            <span class="ref-accordion-icon" aria-hidden="true">▼</span>
-          </button>
-          
-          <div id="ref-content" class="ref-body">
-            <p id="ref-intro-text" class="ref-note">
-              다음은 향수를 표현하는 세 가지 설명 방식입니다. 각 설명을 읽고 실제로 어떤 향이 날지 상상해 본 뒤 질문에 답변해 주세요.
-            </p>
+      <!-- 2-Column Responsive Layout -->
+      <div class="survey-grid-container">
+        
+        <!-- Reference Panel: Left Column -->
+        <aside id="reference-panel" class="reference-sticky-deck" aria-label="향 설명 참고자료">
+          <div class="ref-photo-header">
+            <img src="assets/perfume-lab.jpg" alt="향수 연구소 시향지 아틀리에">
+            <div class="ref-photo-overlay">
+              <span class="ref-photo-title">Sensory Lab Notes</span>
+            </div>
+          </div>
 
-            <div class="scent-card-stack">
-              <article id="card-desc-a" class="scent-spec-card">
-                <div class="scent-spec-header">
-                  <span class="scent-tag">설명 A</span>
-                  <span class="scent-type-label">전문 용어 / 노트 기반</span>
-                </div>
-                <p class="scent-text">"알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"</p>
-              </article>
+          <div class="ref-deck-content">
+            <button type="button" id="ref-accordion-btn" class="ref-accordion-trigger" aria-expanded="true" aria-controls="ref-content">
+              <span>향 설명 참고자료</span>
+              <span class="ref-accordion-icon" aria-hidden="true">▼</span>
+            </button>
 
-              <article id="card-desc-b" class="scent-spec-card">
-                <div class="scent-spec-header">
-                  <span class="scent-tag">설명 B</span>
-                  <span class="scent-type-label">감성적 / 추상적 묘사</span>
-                </div>
-                <p class="scent-text">"햇살이 쏟아지는 주말 아침, 새하얀 침구 위에서 뒹굴 때 느껴지는 나른하고 포근한 분위기의 향"</p>
-              </article>
+            <div id="ref-content" class="ref-content-body">
+              <p id="ref-intro-text" class="ref-intro-note">
+                다음은 향수를 표현하는 세 가지 설명 방식입니다. 각 설명을 읽고 실제로 어떤 향이 날지 상상해 본 뒤 질문에 답변해 주세요.
+              </p>
 
-              <article id="card-desc-c" class="scent-spec-card">
-                <div class="scent-spec-header">
-                  <span class="scent-tag">설명 C</span>
-                  <span class="scent-type-label">경험 / 비유 기반</span>
-                </div>
-                <p class="scent-text">"햇볕에 바싹 말린 깨끗한 면 티셔츠에서 나는 뽀송뽀송한 섬유유연제 냄새"</p>
-              </article>
+              <div class="scent-cards-stack">
+                <!-- Card A -->
+                <article id="card-desc-a" class="scent-spec-box">
+                  <div class="scent-box-top">
+                    <span class="scent-badge-tag">설명 A</span>
+                    <span class="scent-tone-label">전문 용어 / 노트 기반</span>
+                  </div>
+                  <p class="scent-quote-text">
+                    "알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"
+                  </p>
+                </article>
+
+                <!-- Card B -->
+                <article id="card-desc-b" class="scent-spec-box">
+                  <div class="scent-box-top">
+                    <span class="scent-badge-tag">설명 B</span>
+                    <span class="scent-tone-label">감성적 / 추상적 묘사</span>
+                  </div>
+                  <p class="scent-quote-text">
+                    "햇살이 쏟아지는 주말 아침, 새하얀 침구 위에서 뒹굴 때 느껴지는 나른하고 포근한 분위기의 향"
+                  </p>
+                </article>
+
+                <!-- Card C -->
+                <article id="card-desc-c" class="scent-spec-box">
+                  <div class="scent-box-top">
+                    <span class="scent-badge-tag">설명 C</span>
+                    <span class="scent-tone-label">경험 / 비유 기반</span>
+                  </div>
+                  <p class="scent-quote-text">
+                    "햇볕에 바싹 말린 깨끗한 면 티셔츠에서 나는 뽀송뽀송한 섬유유연제 냄새"
+                  </p>
+                </article>
+              </div>
             </div>
           </div>
         </aside>
 
-        <div class="survey-content-panel">
-          <div id="validation-alert" class="validation-alert" role="alert" aria-live="assertive">
+        <!-- Right: Survey Questions Stream -->
+        <div class="survey-questions-stream">
+
+          <!-- Validation Alert -->
+          <div id="validation-alert" class="error-alert-banner" role="alert" aria-live="assertive">
             <span aria-hidden="true">⚠️</span>
             <span id="validation-error-text">모든 필수 항목에 답변해 주세요.</span>
           </div>
 
           <form id="survey-form" novalidate>
-            <!-- SECTION 1 -->
+            
+            <!-- SECTION 1: Q1, Q2 -->
             <div id="sec-1" class="section-wrapper active">
-              <div id="q1-card" class="question-card">
+              
+              <!-- Q1 -->
+              <div id="q1-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q1. 평소 향수에 대한 관심도와 사용 빈도는 어느 정도인가요?</legend>
-                  <div class="choice-options-list">
-                    <label class="choice-option-label" for="q1_beginner">
+                  <legend class="question-legend-title">
+                    Q1. 평소 향수에 대한 관심도와 사용 빈도는 어느 정도인가요?
+                  </legend>
+                  <div class="choices-stack">
+                    <label class="choice-card-label" for="q1_beginner">
                       <input type="radio" id="q1_beginner" name="q1" value="beginner">
-                      <div class="choice-text-wrap"><span class="choice-primary-text">향수를 거의 사용하지 않거나, 이제 막 관심을 가지기 시작했다.</span></div>
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">향수를 거의 사용하지 않거나, 이제 막 관심을 가지기 시작했다.</span>
                     </label>
-                    <label class="choice-option-label" for="q1_general">
+                    <label class="choice-card-label" for="q1_general">
                       <input type="radio" id="q1_general" name="q1" value="general">
-                      <div class="choice-text-wrap"><span class="choice-primary-text">가끔 사용하며, 유명한 향수 위주로 알고 있다.</span></div>
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">가끔 사용하며, 유명한 향수 위주로 알고 있다.</span>
                     </label>
-                    <label class="choice-option-label" for="q1_experienced">
+                    <label class="choice-card-label" for="q1_experienced">
                       <input type="radio" id="q1_experienced" name="q1" value="experienced">
-                      <div class="choice-text-wrap"><span class="choice-primary-text">자주 사용하며, 다양한 향조(노트)와 브랜드에 대해 잘 알고 있다.</span></div>
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">자주 사용하며, 다양한 향조(노트)와 브랜드에 대해 잘 알고 있다.</span>
                     </label>
                   </div>
                 </fieldset>
               </div>
 
-              <div id="q2-card" class="question-card">
+              <!-- Q2 -->
+              <div id="q2-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q2. 지금까지 온라인에서 직접 시향하지 않고 향수를 구매(블라인드 구매)한 횟수는 총 몇 회인가요?</legend>
-                  <p class="question-hint">※ 블라인드 구매란 향수를 직접 맡아보지 않고, 온라인의 설명이나 후기 등을 참고하여 구매하는 것을 의미합니다.</p>
-                  <div class="choice-options-list">
-                    <label class="choice-option-label" for="q2_0"><input type="radio" id="q2_0" name="q2" value="0"><span class="choice-primary-text">0회 (구매 경험 없음)</span></label>
-                    <label class="choice-option-label" for="q2_1"><input type="radio" id="q2_1" name="q2" value="1"><span class="choice-primary-text">1회</span></label>
-                    <label class="choice-option-label" for="q2_2"><input type="radio" id="q2_2" name="q2" value="2"><span class="choice-primary-text">2회</span></label>
-                    <label class="choice-option-label" for="q2_3"><input type="radio" id="q2_3" name="q2" value="3"><span class="choice-primary-text">3회</span></label>
-                    <label class="choice-option-label" for="q2_4"><input type="radio" id="q2_4" name="q2" value="4"><span class="choice-primary-text">4회</span></label>
-                    <label class="choice-option-label" for="q2_5"><input type="radio" id="q2_5" name="q2" value="5"><span class="choice-primary-text">5회</span></label>
-                    <label class="choice-option-label" for="q2_6_10"><input type="radio" id="q2_6_10" name="q2" value="6_10"><span class="choice-primary-text">6~10회</span></label>
-                    <label class="choice-option-label" for="q2_11_plus"><input type="radio" id="q2_11_plus" name="q2" value="11_plus"><span class="choice-primary-text">11회 이상</span></label>
+                  <legend class="question-legend-title">
+                    Q2. 지금까지 온라인에서 직접 시향하지 않고 향수를 구매(블라인드 구매)한 횟수는 총 몇 회인가요?
+                  </legend>
+                  <div class="question-hint-box">
+                    ※ 블라인드 구매란 향수를 직접 맡아보지 않고, 온라인의 설명이나 후기 등을 참고하여 구매하는 것을 의미합니다.
+                  </div>
+                  <div class="choices-grid-compact">
+                    <label class="choice-card-label" for="q2_0">
+                      <input type="radio" id="q2_0" name="q2" value="0">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">0회 (구매 경험 없음)</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_1">
+                      <input type="radio" id="q2_1" name="q2" value="1">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">1회</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_2">
+                      <input type="radio" id="q2_2" name="q2" value="2">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">2회</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_3">
+                      <input type="radio" id="q2_3" name="q2" value="3">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">3회</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_4">
+                      <input type="radio" id="q2_4" name="q2" value="4">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">4회</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_5">
+                      <input type="radio" id="q2_5" name="q2" value="5">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">5회</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_6_10">
+                      <input type="radio" id="q2_6_10" name="q2" value="6_10">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">6~10회</span>
+                    </label>
+                    <label class="choice-card-label" for="q2_11_plus">
+                      <input type="radio" id="q2_11_plus" name="q2" value="11_plus">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">11회 이상</span>
+                    </label>
                   </div>
                 </fieldset>
               </div>
+
             </div>
 
-            <!-- SECTION 2 -->
+            <!-- SECTION 2: Q3 (조건부 분기) -->
             <div id="sec-2" class="section-wrapper">
-              <div id="q3-card" class="question-card">
+              <div id="q3-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q3. 가장 최근 블라인드 구매한 향수의 실제 향은 기대했던 향과 비교했을 때 얼마나 만족스러웠나요?</legend>
-                  <div class="scale-container">
-                    <div class="scale-buttons-row">
-                      <label class="scale-btn-label" for="q3_1"><input type="radio" id="q3_1" name="q3" value="1"><span class="scale-num">1</span></label>
-                      <label class="scale-btn-label" for="q3_2"><input type="radio" id="q3_2" name="q3" value="2"><span class="scale-num">2</span></label>
-                      <label class="scale-btn-label" for="q3_3"><input type="radio" id="q3_3" name="q3" value="3"><span class="scale-num">3</span></label>
-                      <label class="scale-btn-label" for="q3_4"><input type="radio" id="q3_4" name="q3" value="4"><span class="scale-num">4</span></label>
-                      <label class="scale-btn-label" for="q3_5"><input type="radio" id="q3_5" name="q3" value="5"><span class="scale-num">5</span></label>
+                  <legend class="question-legend-title">
+                    Q3. 가장 최근 블라인드 구매한 향수의 실제 향은 기대했던 향과 비교했을 때 얼마나 만족스러웠나요?
+                  </legend>
+                  
+                  <div class="scale-rating-deck">
+                    <div class="scale-tiles-grid">
+                      <label class="scale-tile-btn" for="q3_1">
+                        <input type="radio" id="q3_1" name="q3" value="1">
+                        <span class="scale-digit">1</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q3_2">
+                        <input type="radio" id="q3_2" name="q3" value="2">
+                        <span class="scale-digit">2</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q3_3">
+                        <input type="radio" id="q3_3" name="q3" value="3">
+                        <span class="scale-digit">3</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q3_4">
+                        <input type="radio" id="q3_4" name="q3" value="4">
+                        <span class="scale-digit">4</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q3_5">
+                        <input type="radio" id="q3_5" name="q3" value="5">
+                        <span class="scale-digit">5</span>
+                      </label>
                     </div>
-                    <div class="scale-axis-labels"><span>1: 매우 불만족</span><span>3: 보통</span><span>5: 매우 만족</span></div>
+                    <div class="scale-poles-row">
+                      <span>1: 매우 불만족</span>
+                      <span>3: 보통</span>
+                      <span>5: 매우 만족</span>
+                    </div>
                   </div>
                 </fieldset>
               </div>
             </div>
 
-            <!-- SECTION 3 -->
+            <!-- SECTION 3: Q4, Q5 -->
             <div id="sec-3" class="section-wrapper">
-              <div id="q4-card" class="question-card">
+              
+              <!-- Q4 -->
+              <div id="q4-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q4. [설명 A]와 같은 전문적인 향료 중심 설명을 읽었을 때, 실제 향이 얼마나 구체적으로 상상되시나요?</legend>
-                  <p class="question-hint">※ 좌측의 [설명 A] 참고 문장을 읽고 답변해 주세요.</p>
-                  <div class="scale-container">
-                    <div class="scale-buttons-row">
-                      <label class="scale-btn-label" for="q4_1"><input type="radio" id="q4_1" name="q4" value="1"><span class="scale-num">1</span></label>
-                      <label class="scale-btn-label" for="q4_2"><input type="radio" id="q4_2" name="q4" value="2"><span class="scale-num">2</span></label>
-                      <label class="scale-btn-label" for="q4_3"><input type="radio" id="q4_3" name="q4" value="3"><span class="scale-num">3</span></label>
-                      <label class="scale-btn-label" for="q4_4"><input type="radio" id="q4_4" name="q4" value="4"><span class="scale-num">4</span></label>
-                      <label class="scale-btn-label" for="q4_5"><input type="radio" id="q4_5" name="q4" value="5"><span class="scale-num">5</span></label>
+                  <legend class="question-legend-title">
+                    Q4. [설명 A]와 같은 전문적인 향료 중심 설명을 읽었을 때, 실제 향이 얼마나 구체적으로 상상되시나요?
+                  </legend>
+                  <p class="question-hint-box">※ 참고자료의 [설명 A] 문장을 읽고 답변해 주세요.</p>
+
+                  <div class="scale-rating-deck">
+                    <div class="scale-tiles-grid">
+                      <label class="scale-tile-btn" for="q4_1">
+                        <input type="radio" id="q4_1" name="q4" value="1">
+                        <span class="scale-digit">1</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q4_2">
+                        <input type="radio" id="q4_2" name="q4" value="2">
+                        <span class="scale-digit">2</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q4_3">
+                        <input type="radio" id="q4_3" name="q4" value="3">
+                        <span class="scale-digit">3</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q4_4">
+                        <input type="radio" id="q4_4" name="q4" value="4">
+                        <span class="scale-digit">4</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q4_5">
+                        <input type="radio" id="q4_5" name="q4" value="5">
+                        <span class="scale-digit">5</span>
+                      </label>
                     </div>
-                    <div class="scale-axis-labels"><span>1: 전혀 상상되지 않음</span><span>3: 보통이다</span><span>5: 매우 선명하게 상상됨</span></div>
+                    <div class="scale-poles-row">
+                      <span>1: 전혀 상상되지 않음</span>
+                      <span>3: 보통이다</span>
+                      <span>5: 매우 선명하게 상상됨</span>
+                    </div>
                   </div>
                 </fieldset>
               </div>
 
-              <div id="q5-card" class="question-card">
+              <!-- Q5 -->
+              <div id="q5-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q5. [설명 A]를 읽고 향을 상상할 때, 다음 중 어떤 것에 가장 크게 의존하셨나요?</legend>
-                  <div class="choice-options-list">
-                    <label class="choice-option-label" for="q5_ingredient"><input type="radio" id="q5_ingredient" name="q5" value="ingredient_knowledge"><span class="choice-primary-text">'알데하이드', '오크모스' 등 개별 향료에 대한 나의 사전 지식</span></label>
-                    <label class="choice-option-label" for="q5_word"><input type="radio" id="q5_word" name="q5" value="word_impression"><span class="choice-primary-text">단어들이 주는 막연한 어감이나 전반적인 분위기</span></label>
-                    <label class="choice-option-label" for="q5_memory"><input type="radio" id="q5_memory" name="q5" value="past_smell_memory"><span class="choice-primary-text">과거에 맡아본 비슷한 향수나 화장품의 기억</span></label>
-                    <label class="choice-option-label" for="q5_cannot"><input type="radio" id="q5_cannot" name="q5" value="cannot_imagine"><span class="choice-primary-text">향이 거의 상상되지 않음</span></label>
+                  <legend class="question-legend-title">
+                    Q5. [설명 A]를 읽고 향을 상상할 때, 다음 중 어떤 것에 가장 크게 의존하셨나요?
+                  </legend>
+                  <div class="choices-stack">
+                    <label class="choice-card-label" for="q5_ingredient">
+                      <input type="radio" id="q5_ingredient" name="q5" value="ingredient_knowledge">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">'알데하이드', '오크모스' 등 개별 향료에 대한 나의 사전 지식</span>
+                    </label>
+                    <label class="choice-card-label" for="q5_word">
+                      <input type="radio" id="q5_word" name="q5" value="word_impression">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">단어들이 주는 막연한 어감이나 전반적인 분위기</span>
+                    </label>
+                    <label class="choice-card-label" for="q5_memory">
+                      <input type="radio" id="q5_memory" name="q5" value="past_smell_memory">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">과거에 맡아본 비슷한 향수나 화장품의 기억</span>
+                    </label>
+                    <label class="choice-card-label" for="q5_cannot">
+                      <input type="radio" id="q5_cannot" name="q5" value="cannot_imagine">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">향이 거의 상상되지 않음</span>
+                    </label>
                   </div>
                 </fieldset>
               </div>
+
             </div>
 
-            <!-- SECTION 4 -->
+            <!-- SECTION 4: Q6, Q7 -->
             <div id="sec-4" class="section-wrapper">
-              <div id="q6-card" class="question-card">
+              
+              <!-- Q6 -->
+              <div id="q6-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q6. 위 세 가지 설명(A, B, C) 중 실제 향을 머릿속으로 떠올리기 가장 쉬웠던 설명은 무엇인가요?</legend>
-                  <div class="choice-options-list">
-                    <label class="choice-option-label" for="q6_a"><input type="radio" id="q6_a" name="q6" value="a"><span class="choice-primary-text">설명 A (전문 용어 / 노트 기반)</span></label>
-                    <label class="choice-option-label" for="q6_b"><input type="radio" id="q6_b" name="q6" value="b"><span class="choice-primary-text">설명 B (감성적 / 추상적 묘사)</span></label>
-                    <label class="choice-option-label" for="q6_c"><input type="radio" id="q6_c" name="q6" value="c"><span class="choice-primary-text">설명 C (경험 / 비유 기반)</span></label>
+                  <legend class="question-legend-title">
+                    Q6. 위 세 가지 설명(A, B, C) 중 실제 향을 머릿속으로 떠올리기 가장 쉬웠던 설명은 무엇인가요?
+                  </legend>
+
+                  <div class="choices-stack">
+                    <label class="choice-card-label" for="q6_a">
+                      <input type="radio" id="q6_a" name="q6" value="a">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">설명 A (전문 용어 / 노트 기반)</span>
+                    </label>
+                    <label class="choice-card-label" for="q6_b">
+                      <input type="radio" id="q6_b" name="q6" value="b">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">설명 B (감성적 / 추상적 묘사)</span>
+                    </label>
+                    <label class="choice-card-label" for="q6_c">
+                      <input type="radio" id="q6_c" name="q6" value="c">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">설명 C (경험 / 비유 기반)</span>
+                    </label>
                   </div>
                 </fieldset>
               </div>
 
-              <div id="q7-card" class="question-card">
+              <!-- Q7 -->
+              <div id="q7-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q7. 향수의 텍스트 설명을 읽고 향을 상상할 때, 평소 본인은 어떤 방식을 주로 사용하나요?</legend>
-                  <div class="choice-options-list">
-                    <label class="choice-option-label" for="q7_combine"><input type="radio" id="q7_combine" name="q7" value="combine_notes"><span class="choice-primary-text">탑/미들/베이스 노트의 향료들을 머릿속에서 조합해 본다.</span></label>
-                    <label class="choice-option-label" for="q7_mood"><input type="radio" id="q7_mood" name="q7" value="imagine_mood"><span class="choice-primary-text">설명이 주는 이미지나 분위기(예: 시크함, 따뜻함)를 떠올린다.</span></label>
-                    <label class="choice-option-label" for="q7_match"><input type="radio" id="q7_match" name="q7" value="match_memory"><span class="choice-primary-text">과거에 경험했던 특정 공간, 사물, 자연의 냄새와 연결해 본다.</span></label>
+                  <legend class="question-legend-title">
+                    Q7. 향수의 텍스트 설명을 읽고 향을 상상할 때, 평소 본인은 어떤 방식을 주로 사용하나요?
+                  </legend>
+                  <div class="choices-stack">
+                    <label class="choice-card-label" for="q7_combine">
+                      <input type="radio" id="q7_combine" name="q7" value="combine_notes">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">탑/미들/베이스 노트의 향료들을 머릿속에서 조합해 본다.</span>
+                    </label>
+                    <label class="choice-card-label" for="q7_mood">
+                      <input type="radio" id="q7_mood" name="q7" value="imagine_mood">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">설명이 주는 이미지나 분위기(예: 시크함, 따뜻함)를 떠올린다.</span>
+                    </label>
+                    <label class="choice-card-label" for="q7_match">
+                      <input type="radio" id="q7_match" name="q7" value="match_memory">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">과거에 경험했던 특정 공간, 사물, 자연의 냄새와 연결해 본다.</span>
+                    </label>
                   </div>
                 </fieldset>
               </div>
+
             </div>
 
-            <!-- SECTION 5 -->
+            <!-- SECTION 5: Q8, Q9 -->
             <div id="sec-5" class="section-wrapper">
-              <div id="q8-card" class="question-card">
+              
+              <!-- Q8 -->
+              <div id="q8-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q8. 온라인에서 향수를 구매한다고 가정할 때, 다음 중 어떤 방식의 설명이 실제 향을 예상하는 데 가장 도움이 될 것 같나요?</legend>
-                  <div class="choice-options-list">
-                    <label class="choice-option-label" for="q8_pro"><input type="radio" id="q8_pro" name="q8" value="professional"><span class="choice-primary-text">전문적인 향조 구조 제공 (예: 탑-베르가못, 미들-자스민, 베이스-머스크)</span></label>
-                    <label class="choice-option-label" for="q8_emo"><input type="radio" id="q8_emo" name="q8" value="emotional"><span class="choice-primary-text">감성적인 분위기와 스토리 제공 (예: 이슬 맺힌 숲속을 걷는 듯한 신비로움)</span></label>
-                    <label class="choice-option-label" for="q8_day"><input type="radio" id="q8_day" name="q8" value="everyday"><span class="choice-primary-text">일상적이고 직관적인 비유 제공 (예: 갓 씻고 나온 후의 비누 향, 섬유유연제 향)</span></label>
+                  <legend class="question-legend-title">
+                    Q8. 온라인에서 향수를 구매한다고 가정할 때, 다음 중 어떤 방식의 설명이 실제 향을 예상하는 데 가장 도움이 될 것 같나요?
+                  </legend>
+                  <div class="choices-stack">
+                    <label class="choice-card-label" for="q8_pro">
+                      <input type="radio" id="q8_pro" name="q8" value="professional">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">전문적인 향조 구조 제공 (예: 탑-베르가못, 미들-자스민, 베이스-머스크)</span>
+                    </label>
+                    <label class="choice-card-label" for="q8_emo">
+                      <input type="radio" id="q8_emo" name="q8" value="emotional">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">감성적인 분위기와 스토리 제공 (예: 이슬 맺힌 숲속을 걷는 듯한 신비로움)</span>
+                    </label>
+                    <label class="choice-card-label" for="q8_day">
+                      <input type="radio" id="q8_day" name="q8" value="everyday">
+                      <span class="custom-radio-mark" aria-hidden="true"></span>
+                      <span class="choice-content-text">일상적이고 직관적인 비유 제공 (예: 갓 씻고 나온 후의 비누 향, 섬유유연제 향)</span>
+                    </label>
                   </div>
                 </fieldset>
               </div>
 
-              <div id="q9-card" class="question-card">
+              <!-- Q9 -->
+              <div id="q9-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
-                  <legend class="question-legend">Q9. 기존 향수 쇼핑몰에서 주로 사용하는 감성적이고 추상적인 묘사(예: 파리의 밤거리, 우아한 여인의 향기 등)가 실제 향을 예상하는 데 얼마나 신뢰할 만하다고 생각하시나요?</legend>
-                  <div class="scale-container">
-                    <div class="scale-buttons-row">
-                      <label class="scale-btn-label" for="q9_1"><input type="radio" id="q9_1" name="q9" value="1"><span class="scale-num">1</span></label>
-                      <label class="scale-btn-label" for="q9_2"><input type="radio" id="q9_2" name="q9" value="2"><span class="scale-num">2</span></label>
-                      <label class="scale-btn-label" for="q9_3"><input type="radio" id="q9_3" name="q9" value="3"><span class="scale-num">3</span></label>
-                      <label class="scale-btn-label" for="q9_4"><input type="radio" id="q9_4" name="q9" value="4"><span class="scale-num">4</span></label>
-                      <label class="scale-btn-label" for="q9_5"><input type="radio" id="q9_5" name="q9" value="5"><span class="scale-num">5</span></label>
+                  <legend class="question-legend-title">
+                    Q9. 기존 향수 쇼핑몰에서 주로 사용하는 감성적이고 추상적인 묘사(예: 파리의 밤거리, 우아한 여인의 향기 등)가 실제 향을 예상하는 데 얼마나 신뢰할 만하다고 생각하시나요?
+                  </legend>
+                  
+                  <div class="scale-rating-deck">
+                    <div class="scale-tiles-grid">
+                      <label class="scale-tile-btn" for="q9_1">
+                        <input type="radio" id="q9_1" name="q9" value="1">
+                        <span class="scale-digit">1</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q9_2">
+                        <input type="radio" id="q9_2" name="q9" value="2">
+                        <span class="scale-digit">2</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q9_3">
+                        <input type="radio" id="q9_3" name="q9" value="3">
+                        <span class="scale-digit">3</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q9_4">
+                        <input type="radio" id="q9_4" name="q9" value="4">
+                        <span class="scale-digit">4</span>
+                      </label>
+                      <label class="scale-tile-btn" for="q9_5">
+                        <input type="radio" id="q9_5" name="q9" value="5">
+                        <span class="scale-digit">5</span>
+                      </label>
                     </div>
-                    <div class="scale-axis-labels"><span>1: 전혀 신뢰하지 않음</span><span>3: 보통이다</span><span>5: 매우 신뢰한다</span></div>
+                    <div class="scale-poles-row">
+                      <span>1: 전혀 신뢰하지 않음</span>
+                      <span>3: 보통이다</span>
+                      <span>5: 매우 신뢰한다</span>
+                    </div>
                   </div>
                 </fieldset>
               </div>
+
             </div>
 
-            <!-- Nav Bar -->
-            <div class="form-nav-bar">
-              <button type="button" id="btn-prev" class="btn-secondary" style="display: none;">이전</button>
-              <div style="flex: 1;"></div>
-              <button type="button" id="btn-next" class="btn-primary">다음</button>
-              <button type="button" id="btn-submit" class="btn-primary" style="display: none;">응답 제출하기</button>
+            <!-- Sticky Bottom Form Action Dock -->
+            <div class="form-nav-dock">
+              <div class="form-nav-deck">
+                <button type="button" id="btn-prev" class="btn-nav-prev" style="display: none;">
+                  ← 이전
+                </button>
+                <div style="flex: 1;"></div>
+                <button type="button" id="btn-next" class="btn-nav-next">
+                  다음 단계 →
+                </button>
+                <button type="button" id="btn-submit" class="btn-nav-next" style="display: none;">
+                  응답 제출하기
+                </button>
+              </div>
             </div>
+
           </form>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- VIEW 3: SUBMITTING -->
+    <!-- ==================== VIEW 3: SUBMITTING ==================== -->
     <section id="view-submitting" class="view-panel" aria-live="polite">
-      <div class="loading-card">
-        <div class="spinner" aria-hidden="true"></div>
-        <h2 class="loading-title">응답을 제출하는 중입니다</h2>
-        <p class="loading-desc">익명 데이터를 안전하게 기록하고 집계 결과를 불러오고 있습니다...</p>
+      <div class="submitting-card">
+        <div class="luxury-spinner" aria-hidden="true"></div>
+        <h2 class="submitting-title">응답을 제출하는 중입니다</h2>
+        <p class="submitting-desc">익명 데이터를 안전하게 기록하고 실시간 통계 결과를 불러오고 있습니다...</p>
       </div>
     </section>
 
-    <!-- VIEW 4: SUCCESS & STATS -->
+    <!-- ==================== VIEW 4: SUCCESS & STATS ==================== -->
     <section id="view-success" class="view-panel" aria-labelledby="success-title-id">
-      <div class="success-banner">
-        <div class="success-check-icon" aria-hidden="true">✓</div>
-        <h1 id="success-title-id" class="success-title">응답이 성공적으로 제출되었습니다</h1>
-        <p class="success-subtext">소중한 의견에 깊이 감사드립니다. 아래에서 실시간 전체 익명 집계 결과를 확인하세요.</p>
+      
+      <div class="success-header-card">
+        <div class="success-check-badge" aria-hidden="true">✓</div>
+        <h1 id="success-title-id" class="success-heading-text">응답이 성공적으로 제출되었습니다</h1>
+        <p class="success-lead-text">소중한 의견에 깊이 감사드립니다. 전체 참여자의 실시간 익명 집계 통계를 확인하세요.</p>
       </div>
 
       <div id="stats-container">
-        <div class="stats-header-wrap">
-          <h2 class="stats-title">전체 참여자 응답 집계</h2>
-          <span id="stats-total-badge" class="stats-sample-badge">총 접수: 0건</span>
+        
+        <div class="dashboard-title-row">
+          <div class="dashboard-heading-group">
+            <h2 class="dashboard-title">전체 참여자 응답 실시간 집계</h2>
+            <span class="dashboard-sub">익명 통계 데이터</span>
+          </div>
+          <span id="stats-total-badge" class="sample-n-badge">총 접수: 0건</span>
         </div>
 
-        <div id="stats-insufficient" class="insufficient-stats-box" style="display: none;">
-          <p><strong>📊 익명 보호를 위해 집계 표시는 최소 5건 이상 접수 시 공개됩니다.</strong></p>
-          <p id="stats-insufficient-msg">현재 총 0건이 접수되었습니다. 일정 건수가 모이면 자동으로 통계가 표시됩니다.</p>
+        <!-- 1) 표본 수 부족 안내 (< 5건) -->
+        <div id="stats-insufficient" class="insufficient-box" style="display: none;">
+          <p><strong>📊 개인정보 보호 및 익명성 보장을 위해 최소 5건 이상 접수 시 통계가 공개됩니다.</strong></p>
+          <p id="stats-insufficient-msg" class="insufficient-subtext">
+            현재 총 0건이 접수되었습니다. 일정 건수가 모이면 자동으로 통계가 표시됩니다.
+          </p>
         </div>
 
-        <div id="stats-ready" style="display: none;">
-          <div class="featured-stats-grid">
-            <article class="stat-card featured" id="stat-card-q6">
-              <div class="stat-card-title"><span>Q6. 상상하기 가장 쉬웠던 설명</span><span class="scent-tag">핵심 문항</span></div>
-              <div class="chart-bars-list" id="chart-bars-q6"></div>
+        <!-- 2) 통계 준비 완료 (>= 5건) -->
+        <div id="stats-ready" class="stats-content-deck" style="display: none;">
+          
+          <!-- Key Insights Header Grid (Q6, Q8) -->
+          <div class="featured-insights-grid">
+            
+            <!-- Q6 Card -->
+            <article class="insight-card gold-highlight" id="stat-card-q6">
+              <div class="insight-card-header">
+                <h3 class="insight-title-text">Q6. 상상하기 가장 쉬웠던 설명</h3>
+                <span class="key-tag">핵심 인사이트</span>
+              </div>
+              <div class="bars-container" id="chart-bars-q6"></div>
             </article>
 
-            <article class="stat-card featured" id="stat-card-q8">
-              <div class="stat-card-title"><span>Q8. 구매 시 가장 도움 되는 설명</span><span class="scent-tag">핵심 문항</span></div>
-              <div class="chart-bars-list" id="chart-bars-q8"></div>
+            <!-- Q8 Card -->
+            <article class="insight-card gold-highlight" id="stat-card-q8">
+              <div class="insight-card-header">
+                <h3 class="insight-title-text">Q8. 실제 향 예상에 도움되는 설명</h3>
+                <span class="key-tag">구매 정보 가치</span>
+              </div>
+              <div class="bars-container" id="chart-bars-q8"></div>
             </article>
+
           </div>
 
-          <div class="stats-detail-accordion">
-            <button type="button" id="toggle-all-stats-btn" class="stats-accordion-btn" aria-expanded="true" aria-controls="all-stats-wrapper">
-              <span>전체 문항 세부 결과 보기 (Q1 ~ Q9)</span>
-              <span id="all-stats-icon" aria-hidden="true">▼</span>
+          <!-- Full Questions Accordion -->
+          <div class="full-stats-accordion">
+            <button type="button" id="toggle-all-stats-btn" class="accordion-btn" aria-expanded="false" aria-controls="all-stats-wrapper">
+              <span class="accordion-btn-text">전체 문항(Q1 ~ Q9) 상세 통계 보기</span>
+              <span id="all-stats-icon" class="accordion-arrow" aria-hidden="true">▼</span>
             </button>
 
-            <div id="all-stats-wrapper" class="all-stats-grid">
-              <article class="stat-card" id="stat-card-q1">
-                <div class="stat-card-title">Q1. 평소 향수 관심도/빈도</div>
-                <div class="chart-bars-list" id="chart-bars-q1"></div>
-              </article>
-              <article class="stat-card" id="stat-card-q2">
-                <div class="stat-card-title">Q2. 블라인드 구매 횟수</div>
-                <div class="chart-bars-list" id="chart-bars-q2"></div>
-              </article>
-              <article class="stat-card" id="stat-card-q3">
-                <div class="stat-card-title">
-                  <span>Q3. 최근 블라인드 구매 만족도</span>
-                  <span class="stat-mean-badge" id="mean-badge-q3">평균 -점</span>
+            <div id="all-stats-wrapper" class="all-charts-grid" style="display: none;">
+              
+              <!-- Q1 -->
+              <article class="insight-card" id="stat-card-q1">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q1. 평소 향수 관심도/빈도</h4>
                 </div>
-                <div class="chart-bars-list" id="chart-bars-q3"></div>
-                <p id="q3-hidden-notice" class="question-hint" style="display: none; margin-top: 10px;">
-                  ※ 블라인드 구매자 응답 수가 5건 미만으로 Q3 세부 통계는 아직 비공개 상태입니다.
-                </p>
+                <div class="bars-container" id="chart-bars-q1"></div>
               </article>
-              <article class="stat-card" id="stat-card-q4">
-                <div class="stat-card-title">
-                  <span>Q4. 전문 설명(A) 상상 선명도</span>
-                  <span class="stat-mean-badge" id="mean-badge-q4">평균 -점</span>
+
+              <!-- Q2 -->
+              <article class="insight-card" id="stat-card-q2">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q2. 블라인드 구매 횟수</h4>
                 </div>
-                <div class="chart-bars-list" id="chart-bars-q4"></div>
+                <div class="bars-container" id="chart-bars-q2"></div>
               </article>
-              <article class="stat-card" id="stat-card-q5">
-                <div class="stat-card-title">Q5. 전문 설명 상상 시 의존 정보</div>
-                <div class="chart-bars-list" id="chart-bars-q5"></div>
-              </article>
-              <article class="stat-card" id="stat-card-q7">
-                <div class="stat-card-title">Q7. 평소 향 상상 방식</div>
-                <div class="chart-bars-list" id="chart-bars-q7"></div>
-              </article>
-              <article class="stat-card" id="stat-card-q9">
-                <div class="stat-card-title">
-                  <span>Q9. 기존 감성 묘사 신뢰도</span>
-                  <span class="stat-mean-badge" id="mean-badge-q9">평균 -점</span>
+
+              <!-- Q3 -->
+              <article class="insight-card" id="stat-card-q3">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q3. 최근 블라인드 구매 만족도</h4>
+                  <span class="mean-pill-badge" id="mean-badge-q3">평균 -점</span>
                 </div>
-                <div class="chart-bars-list" id="chart-bars-q9"></div>
+                <div id="q3-hidden-notice" class="q3-notice-text" style="display: none;">
+                  * 블라인드 구매 유경험자(Q2 &gt; 0) 응답이 5건 미만입니다.
+                </div>
+                <div class="bars-container" id="chart-bars-q3"></div>
               </article>
+
+              <!-- Q4 -->
+              <article class="insight-card" id="stat-card-q4">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q4. 전문 설명(A) 상상 선명도</h4>
+                  <span class="mean-pill-badge" id="mean-badge-q4">평균 -점</span>
+                </div>
+                <div class="bars-container" id="chart-bars-q4"></div>
+              </article>
+
+              <!-- Q5 -->
+              <article class="insight-card" id="stat-card-q5">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q5. 전문 설명 상상 시 의존 정보</h4>
+                </div>
+                <div class="bars-container" id="chart-bars-q5"></div>
+              </article>
+
+              <!-- Q7 -->
+              <article class="insight-card" id="stat-card-q7">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q7. 평소 텍스트 향 상상 방식</h4>
+                </div>
+                <div class="bars-container" id="chart-bars-q7"></div>
+              </article>
+
+              <!-- Q9 -->
+              <article class="insight-card" id="stat-card-q9">
+                <div class="insight-card-header">
+                  <h4 class="insight-title-text">Q9. 기존 감성 묘사 신뢰도</h4>
+                  <span class="mean-pill-badge" id="mean-badge-q9">평균 -점</span>
+                </div>
+                <div class="bars-container" id="chart-bars-q9"></div>
+              </article>
+
             </div>
           </div>
 
-          <p class="stats-disclaimer">
-            * 본 통계는 응답자들의 주관적 인식에 대한 단순 집계이며, 실제 향 감별의 객관적 정확도를 증명하는 결과는 아닙니다.
+          <p class="disclaimer-caption">
+            * 본 통계는 참여자들의 주관적 인식에 대한 익명 집계이며, 특정 향수의 객관적 품질을 증명하는 것은 아닙니다.
           </p>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- VIEW 5: CLOSED -->
+    <!-- ==================== VIEW 5: CLOSED ==================== -->
     <section id="view-closed" class="view-panel" aria-labelledby="closed-title-id">
-      <div class="closed-card">
-        <h1 id="closed-title-id" class="landing-title">설문 조사가 종료되었습니다</h1>
-        <p class="landing-desc">SCENT LAB 향수 인식 조사가 마감되었습니다. 참여해 주신 모든 분들께 진심으로 감사드립니다.</p>
+      <div class="closed-box">
+        <h1 id="closed-title-id" class="hero-main-headline">설문 조사가 종료되었습니다</h1>
+        <p class="hero-sub-statement">SCENT LAB 향수 인식 조사가 마감되었습니다. 참여해 주신 모든 분들께 진심으로 감사드립니다.</p>
       </div>
     </section>
 
-    <!-- VIEW 6: ERROR -->
+    <!-- ==================== VIEW 6: ERROR ==================== -->
     <section id="view-error" class="view-panel" aria-labelledby="error-title-id">
-      <div class="error-card">
-        <h2 id="error-title-id" class="error-title">접속 또는 저장 중 오류가 발생했습니다</h2>
-        <p id="error-msg-text" class="landing-desc">일시적인 네트워크 장애이거나 서버 설정 확인이 필요합니다.</p>
-        <button type="button" id="btn-retry" class="btn-primary">다시 시도하기</button>
+      <div class="error-box">
+        <h2 id="error-heading-id" class="error-heading">접속 또는 저장 중 오류가 발생했습니다</h2>
+        <p id="error-msg-text" class="hero-sub-statement">일시적인 네트워크 장애이거나 서버 설정 확인이 필요합니다.</p>
+        <button type="button" id="btn-retry" class="hero-cta-btn">다시 시도하기</button>
       </div>
     </section>
+
   </main>
 
+  <!-- Footer -->
   <footer class="app-footer">
-    <p>© 2026 SCENT LAB. Anonymous Perceptual Research. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-monogram">SL</div>
+      <p class="footer-copy">© 2026 SCENT LAB. Anonymous Olfactory Perception Research.</p>
+      <p class="footer-sub">모든 데이터는 암호화 및 익명화되어 안전하게 처리됩니다.</p>
+    </div>
   </footer>
 
-  <?!= include_('Client'); ?>
+  <!-- Application Logic -->
+  <script src="app.js"></script>
 </body>
 </html>
