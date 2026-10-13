@@ -1006,3 +1006,14 @@ Antigravity는 최종적으로 아래 파일을 실제로 생성하고, 파일 �
 2. **문맥형 인라인 배치 및 터치 인터랙션**:
    - **Section 3 (Q4 직전)**: [설명 A] 전용 인라인 스펙 카드 (`.inline-scent-spec-card`)에 [설명 A] 전문과 TOP / HEART / BASE 향조 칩을 렌더링하여 후각 상상 유도
    - **Section 4 (Q6 직전)**: 3-향 타이포그래피 비교 덱 (`.inline-compare-deck`)에 A, B, C 3종의 설명 카드를 동등한 위계로 나란히 배치. 사용자가 카드를 탭하면 Q6 라디오 선택지가 즉시 자동 선택(`bindComparisonCardEvents`)되고 금색 테두리 하이라이트 및 센터 스크롤 활성화
+
+### 18.4 고화질 시그니처 향수 비주얼 시스템 복원 (Visual Richness Restoration)
+1. **전문성 강화 및 비주얼 아이덴티티**:
+   - 텍스트 단독 구성 대비, 니치 향수 연구소의 전문성과 감각적 분위기를 살리기 위해 정성스럽게 제작된 고화질 비주얼 에셋 복원
+2. **모바일 랜딩 헤드라인 직하단 배치 (`.hero-mobile-visual-card`)**:
+   - 모바일 첫 화면(Above the Fold) 세로 비율을 해치지 않는 16:9 슬림 글래스 카드 형태로 `assets/perfume-hero.jpg` 복원
+   - `SCENT LAB · L'IMAGINATION` 모노그램 오버레이 배지를 결합하여 스크롤 없이도 고급스러운 첫인상 제공
+3. **데스크톱 우측 메인 비주얼 플린스 (`.hero-visual-pane`)**:
+   - 우측 전면 패널에 트래버틴 스톤 위의 글래스 보틀 사진(`perfume-hero.jpg`)을 배치하여 연구 에디션의 럭셔리 무드 확보
+4. **설문 좌측 참고자료 아틀리에 비주얼 (`.ref-photo-header`)**:
+   - 데스크톱 설문 참고 패널 상단에 시향지 아틀리에 사진(`assets/perfume-lab.jpg`)과 `SENSORY ARCHIVE` 태그를 결합하여 전문 연구소 감각 극대화
