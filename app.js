@@ -235,6 +235,7 @@ function switchView(viewName) {
 function initApp() {
   bindRadioEvents();
   bindNavigationEvents();
+  bindComparisonCardEvents();
   initMobileReferencePanel();
   updateProgress();
 }
@@ -294,6 +295,49 @@ function updateRadioVisuals(questionName) {
         parentLabel.classList.remove('checked');
       }
     }
+  });
+
+  // Q6 선택 시 상단 3개 향 비교 카드 활성 상태 동기화 및 부드러운 스크롤
+  if (questionName === 'q6') {
+    const compareCards = document.querySelectorAll('.compare-mini-card');
+    const selectedVal = state.answers.q6;
+    const scentKeys = ['a', 'b', 'c'];
+    compareCards.forEach((card, idx) => {
+      if (scentKeys[idx] === selectedVal) {
+        card.classList.add('selected');
+        if (window.innerWidth <= 820) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      } else {
+        card.classList.remove('selected');
+      }
+    });
+  }
+}
+
+// 상단 비교 카드 클릭 및 키보드(Enter/Space) 조작 시 Q6 선택 연동
+function bindComparisonCardEvents() {
+  const compareCards = document.querySelectorAll('.compare-mini-card');
+  const scentKeys = ['a', 'b', 'c'];
+  compareCards.forEach((card, idx) => {
+    card.style.cursor = 'pointer';
+    
+    const triggerSelect = () => {
+      const key = scentKeys[idx];
+      const radio = document.getElementById(`q6_${key}`);
+      if (radio) {
+        radio.checked = true;
+        radio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    };
+
+    card.addEventListener('click', triggerSelect);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        triggerSelect();
+      }
+    });
   });
 }
 

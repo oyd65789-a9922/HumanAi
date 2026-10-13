@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261012-3">
+  <link rel="stylesheet" href="style.css?v=20261013-clean-editorial-3">
 </head>
 <body>
   <a href="#main-content" class="skip-link">본문으로 건너뛰기</a>
@@ -78,7 +78,10 @@
 
             <!-- Privacy Guarantee Banner -->
             <div class="hero-privacy-clause">
-              <strong>🔒 개인식별정보 비수집 및 익명 처리 보장</strong>
+              <div class="privacy-clause-title">
+                <span class="privacy-lock-icon" aria-hidden="true">🔒</span>
+                <strong>개인식별정보 비수집 및 익명 처리 보장</strong>
+              </div>
               <p>본 설문은 이름, 이메일, 전화번호, IP 등 식별 정보를 일체 요구하거나 수집하지 않습니다. 수집된 응답은 연구 목적의 집계에만 활용되며, 제출 즉시 전체 참여자의 익명 통계를 확인하실 수 있습니다.</p>
             </div>
 
@@ -88,11 +91,42 @@
             </button>
           </div>
 
-          <!-- Right: Perfume Visual Plinth -->
+          <!-- Right: Archival Editorial Plinth (Zero AI Slop) -->
           <div class="hero-visual-pane">
-            <img src="assets/perfume-hero.jpg" alt="SCENT LAB 니치 향수 시그니처 글래스 보틀" class="hero-bottle-img">
-            <div class="hero-badge-overlay">
-              <span class="hero-badge-title">SCENT LAB — L'IMAGINATION</span>
+            <div class="hero-archival-plinth">
+              <div class="archival-plinth-inner">
+                <div class="plinth-header">
+                  <span class="plinth-institution">SCENT LAB · SENSORY PERCEPTION</span>
+                  <span class="plinth-batch">EDITION NO. 01</span>
+                </div>
+                <div class="plinth-monogram">SL</div>
+                <div class="plinth-title-block">
+                  <h3 class="plinth-main-title">L'IMAGINATION</h3>
+                  <p class="plinth-sub">How Text Constructs Olfactory Experience</p>
+                </div>
+                <div class="plinth-divider"></div>
+                <div class="plinth-specs-list">
+                  <div class="plinth-spec-row">
+                    <span class="spec-num">01</span>
+                    <span class="spec-label">Nomenclature</span>
+                    <span class="spec-val">Aldehyde · Oakmoss · Musk</span>
+                  </div>
+                  <div class="plinth-spec-row">
+                    <span class="spec-num">02</span>
+                    <span class="spec-label">Atmosphere</span>
+                    <span class="spec-val">Sunlit Morning · White Linen</span>
+                  </div>
+                  <div class="plinth-spec-row">
+                    <span class="spec-num">03</span>
+                    <span class="spec-label">Everyday Memory</span>
+                    <span class="spec-val">Sun-dried Cotton · Clean Softener</span>
+                  </div>
+                </div>
+                <div class="plinth-footer">
+                  <span class="plinth-seal">100% ANONYMOUS · OPEN DATA</span>
+                  <span class="plinth-year">SEOUL · 2026</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -106,7 +140,10 @@
       <!-- Progress Bar -->
       <div class="survey-progress-bar-wrap">
         <div class="progress-header-row">
-          <span id="progress-label" class="progress-step-text">진행 상황: 1단계 / 4단계</span>
+          <div class="progress-info-group">
+            <span id="progress-label" class="progress-step-text">진행 상황: 1단계 / 4단계</span>
+            <span id="progress-stage-name" class="progress-stage-pill">참여자 기본 프로파일</span>
+          </div>
           <span id="progress-percent" class="progress-pct-badge">0%</span>
         </div>
         <div class="progress-groove" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="survey-progressbar">
@@ -119,11 +156,9 @@
         
         <!-- Reference Panel: Left Column -->
         <aside id="reference-panel" class="reference-sticky-deck" aria-label="향 설명 참고자료">
-          <div class="ref-photo-header">
-            <img src="assets/perfume-lab.jpg" alt="향수 연구소 시향지 아틀리에">
-            <div class="ref-photo-overlay">
-              <span class="ref-photo-title">Sensory Lab Notes</span>
-            </div>
+          <div class="ref-editorial-header">
+            <span class="ref-edition-tag">SENSORY ARCHIVE</span>
+            <h3 class="ref-edition-title">향 설명 참고 자료</h3>
           </div>
 
           <div class="ref-deck-content">
@@ -315,13 +350,29 @@
             <!-- SECTION 3: Q4, Q5 -->
             <div id="sec-3" class="section-wrapper">
               
+              <!-- In-Context Sensory Spec Card: Scent A (Pure Typography) -->
+              <div class="inline-scent-spec-card" aria-label="설명 A 참고 자료">
+                <div class="inline-scent-card-top">
+                  <span class="scent-badge-tag">설명 A</span>
+                  <span class="scent-tone-label">전문 용어 / 노트 기반</span>
+                </div>
+                <blockquote class="inline-scent-quote">
+                  "알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"
+                </blockquote>
+                <div class="inline-scent-notes-row">
+                  <span class="note-chip">TOP: 알데하이드</span>
+                  <span class="note-chip">HEART: 오크모스 · 일랑일랑</span>
+                  <span class="note-chip">BASE: 애니멀릭 머스크</span>
+                </div>
+              </div>
+
               <!-- Q4 -->
               <div id="q4-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
                   <legend class="question-legend-title">
                     Q4. [설명 A]와 같은 전문적인 향료 중심 설명을 읽었을 때, 실제 향이 얼마나 구체적으로 상상되시나요?
                   </legend>
-                  <p class="question-hint-box">※ 참고자료의 [설명 A] 문장을 읽고 답변해 주세요.</p>
+                  <p class="question-hint-box">※ 위 [설명 A] 문장을 읽고 상상되는 정도를 선택해 주세요.</p>
 
                   <div class="scale-rating-deck">
                     <div class="scale-tiles-grid">
@@ -391,6 +442,49 @@
             <!-- SECTION 4: Q6, Q7 -->
             <div id="sec-4" class="section-wrapper">
               
+              <!-- In-Context Scent Comparison Deck: A vs B vs C (Pure Typography) -->
+              <div class="inline-compare-deck" aria-label="A, B, C 세 가지 향 설명 비교">
+                <div class="compare-deck-header">
+                  <div class="compare-title-row">
+                    <span class="compare-title">향 설명 3가지 표현 방식 비교</span>
+                    <span class="compare-swipe-pill" aria-hidden="true">터치하여 선택</span>
+                  </div>
+                  <span class="compare-sub">어떤 텍스트가 향을 가장 잘 떠올리게 하나요? 카드를 터치하면 아래 답변이 자동 선택됩니다.</span>
+                </div>
+                <div class="compare-cards-scroll">
+                  <!-- Compare Card A -->
+                  <div class="compare-mini-card" role="button" tabindex="0" aria-label="설명 A 선택">
+                    <div class="compare-card-head">
+                      <span class="scent-badge-tag">설명 A</span>
+                      <span class="compare-category">전문 용어 / 노트 기반</span>
+                    </div>
+                    <div class="compare-body">
+                      <p class="compare-quote">"알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"</p>
+                    </div>
+                  </div>
+                  <!-- Compare Card B -->
+                  <div class="compare-mini-card" role="button" tabindex="0" aria-label="설명 B 선택">
+                    <div class="compare-card-head">
+                      <span class="scent-badge-tag">설명 B</span>
+                      <span class="compare-category">감성적 / 추상적 묘사</span>
+                    </div>
+                    <div class="compare-body">
+                      <p class="compare-quote">"햇살이 쏟아지는 주말 아침, 새하얀 침구 위에서 뒹굴 때 느껴지는 나른하고 포근한 분위기의 향"</p>
+                    </div>
+                  </div>
+                  <!-- Compare Card C -->
+                  <div class="compare-mini-card" role="button" tabindex="0" aria-label="설명 C 선택">
+                    <div class="compare-card-head">
+                      <span class="scent-badge-tag">설명 C</span>
+                      <span class="compare-category">경험 / 비유 기반</span>
+                    </div>
+                    <div class="compare-body">
+                      <p class="compare-quote">"햇볕에 바싹 말린 깨끗한 면 티셔츠에서 나는 뽀송뽀송한 섬유유연제 냄새"</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!-- Q6 -->
               <div id="q6-card" class="question-deck-card">
                 <fieldset class="question-fieldset">
@@ -715,6 +809,6 @@
   </footer>
 
   <!-- Application Logic -->
-  <script src="app.js"></script>
+  <script src="app.js?v=20261013-clean-editorial-3"></script>
 </body>
 </html>
