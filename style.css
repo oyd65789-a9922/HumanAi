@@ -723,6 +723,7 @@ body {
   font-size: 0.86rem;
   font-weight: 700;
   color: var(--text-main);
+  font-variant-numeric: tabular-nums;
 }
 
 .progress-stage-pill {
@@ -1349,17 +1350,20 @@ body {
 }
 
 .scale-digit {
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-main);
   line-height: 1;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 @media (max-width: 480px) {
   .scale-digit {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
   }
 }
+
 
 .scale-tile-btn.checked {
   background: var(--primary);
@@ -1756,6 +1760,7 @@ body {
   border: 1px solid var(--scent-gold-border);
   padding: 3px 10px;
   border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
 }
 
 .q3-notice-text {

@@ -1038,4 +1038,18 @@ Antigravity는 최종적으로 아래 파일을 실제로 생성하고, 파일 �
 4. **클라이언트 코드 정리 (`app.js`)**:
    - 사용되지 않는 참고자료 아코디언 핸들러(`initMobileReferencePanel`, `refAccordionBtn`), 안내문 업데이트(`updateReferencePanelHints`) 함수 및 DOM 참조 완전 정리.
 
+---
+
+### 18.6 [PRD v2.2] 숫자 폰트 일원화 및 타이포그래피 조화 최적화 (Numeric Font Harmonization)
+
+> **작성일**: 2026-10-13 / **문제 정의**: 1~5점 척도 버튼(`.scale-digit`)에 로마 세리프(`Cinzel`)가 강제 지정되어, 주변 산세리프 및 국문 캡션과 심하게 대조되어 혼자 튀는 시각적 불협화음 문제 해결.
+
+1. **척도 숫자 세리프 제거 및 모던 산세리프 통일**:
+   - `.scale-digit`의 `font-family`를 `var(--font-serif)`(Cinzel)에서 `var(--font-sans)`(Plus Jakarta Sans / Noto Sans KR)로 변경.
+   - 폰트 크기(`1.25rem`, 모바일 `1.12rem`)와 굵기(`font-weight: 700`)를 정돈하고 `letter-spacing: -0.01em`을 부여하여 정갈한 니치 디자인 완성.
+2. **타뷸러 숫자(Tabular Nums) 적용으로 시각적 안정감 확보**:
+   - `.scale-digit`, `.progress-step-text`, `.mean-pill-badge`, `.bar-val-text` 등 수치가 변동하거나 비교되는 모든 컴포넌트에 `font-variant-numeric: tabular-nums` 일괄 적용.
+   - 단계 전환 및 선택 시 숫자 폭 차이로 인한 레이아웃 미세 흔들림(Jitter) 원천 차단.
+
+
 
