@@ -242,9 +242,9 @@ function initApp() {
 }
 
 function initMobileReferencePanel() {
-  if (window.innerWidth < 960 && elements.refContent && elements.refAccordionBtn) {
-    elements.refAccordionBtn.setAttribute('aria-expanded', 'false');
-    elements.refContent.style.display = 'none';
+  if (elements.refContent && elements.refAccordionBtn) {
+    elements.refAccordionBtn.setAttribute('aria-expanded', 'true');
+    elements.refContent.style.display = 'block';
   }
 }
 
@@ -373,11 +373,14 @@ function bindNavigationEvents() {
     switchView('survey');
   });
 
-  // 참고자료 아코디언 토글 (모바일)
+  // 참고자료 아코디언 토글 (모바일 및 데스크톱)
   elements.refAccordionBtn?.addEventListener('click', () => {
     const isExpanded = elements.refAccordionBtn.getAttribute('aria-expanded') === 'true';
-    elements.refAccordionBtn.setAttribute('aria-expanded', !isExpanded);
-    elements.refContent.style.display = isExpanded ? 'none' : 'block';
+    const nextState = !isExpanded;
+    elements.refAccordionBtn.setAttribute('aria-expanded', String(nextState));
+    if (elements.refContent) {
+      elements.refContent.style.display = nextState ? 'block' : 'none';
+    }
   });
 
   // 전체 통계 토글 아코디언
