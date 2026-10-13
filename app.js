@@ -186,11 +186,6 @@ const elements = {
     document.getElementById('sec-5')
   ],
 
-  // Reference Panel
-  refAccordionBtn: document.getElementById('ref-accordion-btn'),
-  refContent: document.getElementById('ref-content'),
-  refIntroText: document.getElementById('ref-intro-text'),
-
   // Validation
   validationAlert: document.getElementById('validation-alert'),
   validationErrorText: document.getElementById('validation-error-text'),
@@ -236,15 +231,7 @@ function initApp() {
   bindRadioEvents();
   bindNavigationEvents();
   bindComparisonCardEvents();
-  initMobileReferencePanel();
   updateProgress();
-}
-
-function initMobileReferencePanel() {
-  if (elements.refContent && elements.refAccordionBtn) {
-    elements.refAccordionBtn.setAttribute('aria-expanded', 'true');
-    elements.refContent.style.display = 'block';
-  }
 }
 
 
@@ -372,15 +359,6 @@ function bindNavigationEvents() {
     switchView('survey');
   });
 
-  // 참고자료 아코디언 토글 (모바일 및 데스크톱)
-  elements.refAccordionBtn?.addEventListener('click', () => {
-    const isExpanded = elements.refAccordionBtn.getAttribute('aria-expanded') === 'true';
-    const nextState = !isExpanded;
-    elements.refAccordionBtn.setAttribute('aria-expanded', String(nextState));
-    if (elements.refContent) {
-      elements.refContent.style.display = nextState ? 'block' : 'none';
-    }
-  });
 
   // 전체 통계 토글 아코디언
   elements.toggleAllStatsBtn?.addEventListener('click', () => {
@@ -452,24 +430,14 @@ function goToSection(sectionNumber) {
     elements.btnSubmit.style.display = 'none';
   }
 
-  // 참고자료 패널 안내 문구 업데이트
-  updateReferencePanelHints(sectionNumber);
-
   hideValidationError();
   updateProgress();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function updateReferencePanelHints(sectionNumber) {
-  if (sectionNumber === 1 || sectionNumber === 2) {
-    elements.refIntroText.textContent = '용어 참고: 블라인드 구매란 향수를 직접 시향하지 않고, 온라인 설명이나 후기만을 보고 주문하는 것을 의미합니다.';
-  } else {
-    elements.refIntroText.textContent = '다음은 향수를 표현하는 세 가지 설명 방식입니다. 각 설명을 읽고 실제로 어떤 향이 날지 상상해 본 뒤 질문에 답변해 주세요.';
-  }
-}
-
 function validateCurrentSection() {
   const current = state.currentSection;
+
 
   if (current === 1) {
     if (!state.answers.q1) {

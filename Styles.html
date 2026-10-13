@@ -764,163 +764,21 @@ body {
   transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Survey Grid: 2-Column Desktop, 1-Column Mobile */
+/* Survey Container: Focused Centered Layout (No Duplicates) */
 .survey-grid-container {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 24px;
+  max-width: 680px;
+  margin: 0 auto;
   width: 100%;
   min-width: 0;
 }
-@media (min-width: 960px) {
-  .survey-grid-container {
-    grid-template-columns: 390px minmax(0, 1fr);
-    gap: 32px;
-    align-items: start;
-  }
-}
-@media (max-width: 480px) {
-  .survey-grid-container {
-    gap: 16px;
-  }
-}
-
-/* Reference Panel */
-.reference-sticky-deck {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-@media (min-width: 960px) {
-  .reference-sticky-deck {
-    position: sticky;
-    top: 86px;
-    max-height: calc(100vh - 106px);
-    overflow-y: auto;
-  }
+.survey-questions-stream {
+  width: 100%;
+  min-width: 0;
 }
 @media (max-width: 959px) {
-  .reference-sticky-deck {
-    display: block;
-    margin-bottom: 24px;
-    border-radius: var(--radius-md);
+  .survey-questions-stream {
+    padding-bottom: 110px;
   }
-  .ref-photo-header {
-    height: 110px;
-  }
-  .ref-deck-content {
-    padding: 14px 16px;
-  }
-}
-
-.ref-photo-header {
-  position: relative;
-  height: 130px;
-  overflow: hidden;
-}
-.ref-photo-header img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s ease;
-}
-.reference-sticky-deck:hover .ref-photo-header img {
-  transform: scale(1.02);
-}
-.ref-photo-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(12, 10, 9, 0.88) 0%, rgba(12, 10, 9, 0.25) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 14px 18px;
-}
-.ref-photo-tag {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--scent-gold);
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-.ref-photo-title {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #FAF8F5;
-  margin: 0;
-}
-
-.ref-deck-content {
-  padding: 18px;
-}
-
-.ref-accordion-trigger {
-  width: 100%;
-  background: none;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-main);
-  cursor: pointer;
-  padding: 4px 0;
-  text-align: left;
-}
-.ref-accordion-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.ref-accordion-icon {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  transition: transform var(--transition-fast);
-}
-.ref-accordion-trigger[aria-expanded="true"] .ref-accordion-icon {
-  transform: rotate(180deg);
-}
-
-.ref-intro-note {
-  font-size: 0.84rem;
-  color: var(--text-muted);
-  line-height: 1.55;
-  margin: 12px 0 16px;
-}
-
-/* Scent Spec Cards Stack */
-.scent-cards-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.scent-spec-box {
-  background: var(--bg-subtle);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 16px 18px;
-  transition: all var(--transition-fast);
-  overflow: hidden;
-}
-.scent-spec-box:hover {
-  border-color: var(--scent-gold-border);
-  background: var(--bg-hover);
-}
-
-.scent-box-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-  gap: 6px;
 }
 
 .scent-badge-tag {
@@ -1065,24 +923,71 @@ body {
    In-Context Sensory Reference Cards (Sections 3 & 4) — Pure Typography
    ========================================================================== */
 
-/* Section 3: Scent A Spec Card (Pure Typography) */
+/* Section 3: Scent A Spec Card with Atelier Header */
 .inline-scent-spec-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 22px 24px;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   margin-bottom: 24px;
   transition: all var(--transition-fast);
 }
-@media (max-width: 480px) {
-  .inline-scent-spec-card {
-    padding: 18px 18px;
-    margin-bottom: 20px;
-  }
-}
 .inline-scent-spec-card:hover {
   border-color: var(--scent-gold-border);
+}
+.inline-scent-photo-header {
+  position: relative;
+  height: 140px;
+  overflow: hidden;
+}
+@media (max-width: 480px) {
+  .inline-scent-photo-header {
+    height: 110px;
+  }
+}
+.inline-scent-photo-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.inline-scent-spec-card:hover .inline-scent-photo-header img {
+  transform: scale(1.02);
+}
+.inline-scent-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 10, 9, 0.88) 0%, rgba(12, 10, 9, 0.25) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 20px;
+}
+.inline-scent-photo-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--scent-gold);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.inline-scent-photo-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #FAF8F5;
+  margin: 0;
+}
+.inline-scent-card-body {
+  padding: 22px 24px;
+}
+@media (max-width: 480px) {
+  .inline-scent-card-body {
+    padding: 18px 18px;
+  }
 }
 .inline-scent-card-top {
   display: flex;

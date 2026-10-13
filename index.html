@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261013-visual-rich-3">
+  <link rel="stylesheet" href="style.css?v=20261013-visual-rich-4">
 </head>
 <body>
   <a href="#main-content" class="skip-link">본문으로 건너뛰기</a>
@@ -122,69 +122,9 @@
         </div>
       </div>
 
-      <!-- 2-Column Responsive Layout -->
+      <!-- Focused Centered Survey Questions Layout -->
       <div class="survey-grid-container">
         
-        <!-- Reference Panel: Left Column -->
-        <aside id="reference-panel" class="reference-sticky-deck" aria-label="향 설명 참고자료">
-          <div class="ref-photo-header">
-            <img src="assets/perfume-lab.jpg" alt="향수 연구소 시향지 아틀리에">
-            <div class="ref-photo-overlay">
-              <span class="ref-photo-tag">SENSORY ARCHIVE</span>
-              <span class="ref-photo-title">향 설명 참고 자료</span>
-            </div>
-          </div>
-
-          <div class="ref-deck-content">
-            <button type="button" id="ref-accordion-btn" class="ref-accordion-trigger" aria-expanded="true" aria-controls="ref-content">
-              <span>향 설명 참고자료 (A · B · C 향조 상세)</span>
-              <span class="ref-accordion-icon" aria-hidden="true">▼</span>
-            </button>
-
-            <div id="ref-content" class="ref-content-body">
-              <p id="ref-intro-text" class="ref-intro-note">
-                다음은 향수를 표현하는 세 가지 설명 방식입니다. 각 설명을 읽고 실제로 어떤 향이 날지 상상해 본 뒤 질문에 답변해 주세요.
-              </p>
-
-              <div class="scent-cards-stack">
-                <!-- Card A -->
-                <article id="card-desc-a" class="scent-spec-box">
-                  <div class="scent-box-top">
-                    <span class="scent-badge-tag">설명 A</span>
-                    <span class="scent-tone-label">전문 용어 / 노트 기반</span>
-                  </div>
-                  <p class="scent-quote-text">
-                    "알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"
-                  </p>
-                </article>
-
-                <!-- Card B -->
-                <article id="card-desc-b" class="scent-spec-box">
-                  <div class="scent-box-top">
-                    <span class="scent-badge-tag">설명 B</span>
-                    <span class="scent-tone-label">감성적 / 추상적 묘사</span>
-                  </div>
-                  <p class="scent-quote-text">
-                    "햇살이 쏟아지는 주말 아침, 새하얀 침구 위에서 뒹굴 때 느껴지는 나른하고 포근한 분위기의 향"
-                  </p>
-                </article>
-
-                <!-- Card C -->
-                <article id="card-desc-c" class="scent-spec-box">
-                  <div class="scent-box-top">
-                    <span class="scent-badge-tag">설명 C</span>
-                    <span class="scent-tone-label">경험 / 비유 기반</span>
-                  </div>
-                  <p class="scent-quote-text">
-                    "햇볕에 바싹 말린 깨끗한 면 티셔츠에서 나는 뽀송뽀송한 섬유유연제 냄새"
-                  </p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Right: Survey Questions Stream -->
         <div class="survey-questions-stream">
 
           <!-- Validation Alert -->
@@ -324,19 +264,28 @@
             <!-- SECTION 3: Q4, Q5 -->
             <div id="sec-3" class="section-wrapper">
               
-              <!-- In-Context Sensory Spec Card: Scent A (Pure Typography) -->
+              <!-- In-Context Sensory Spec Card: Scent A with Atelier Header -->
               <div class="inline-scent-spec-card" aria-label="설명 A 참고 자료">
-                <div class="inline-scent-card-top">
-                  <span class="scent-badge-tag">설명 A</span>
-                  <span class="scent-tone-label">전문 용어 / 노트 기반</span>
+                <div class="inline-scent-photo-header">
+                  <img src="assets/perfume-lab.jpg" alt="향수 연구소 시향지 아틀리에">
+                  <div class="inline-scent-photo-overlay">
+                    <span class="inline-scent-photo-tag">SENSORY ARCHIVE</span>
+                    <span class="inline-scent-photo-title">텍스트와 후각적 상상력 연구 · 설명 A</span>
+                  </div>
                 </div>
-                <blockquote class="inline-scent-quote">
-                  "알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"
-                </blockquote>
-                <div class="inline-scent-notes-row">
-                  <span class="note-chip">TOP: 알데하이드</span>
-                  <span class="note-chip">HEART: 오크모스 · 일랑일랑</span>
-                  <span class="note-chip">BASE: 애니멀릭 머스크</span>
+                <div class="inline-scent-card-body">
+                  <div class="inline-scent-card-top">
+                    <span class="scent-badge-tag">설명 A</span>
+                    <span class="scent-tone-label">전문 용어 / 노트 기반</span>
+                  </div>
+                  <blockquote class="inline-scent-quote">
+                    "알데하이드 탑 노트와 오크모스, 일랑일랑이 어우러지며, 베이스의 애니멀릭한 머스크로 마무리되는 향"
+                  </blockquote>
+                  <div class="inline-scent-notes-row">
+                    <span class="note-chip">TOP: 알데하이드</span>
+                    <span class="note-chip">HEART: 오크모스 · 일랑일랑</span>
+                    <span class="note-chip">BASE: 애니멀릭 머스크</span>
+                  </div>
                 </div>
               </div>
 
@@ -783,6 +732,6 @@
   </footer>
 
   <!-- Application Logic -->
-  <script src="app.js?v=20261013-visual-rich-2"></script>
+  <script src="app.js?v=20261013-visual-rich-4"></script>
 </body>
 </html>
